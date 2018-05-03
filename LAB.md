@@ -3,7 +3,7 @@
 Create a word guessing game that:
 
 1. Randomly selects a word from a list of words
-1. The user is shown line blanks for each letter of the word
+1. Shown line blanks for each letter of the word
 1. Allows the users to enter one letter "guess" at a time.
     1. If the guess is correct, show all occurances of that letter in the word
     1. If the guess is incorrect, add a body part to the gallows
