@@ -1,4 +1,4 @@
-# Create an interactive Hang Person game
+# Great an interactive Hang Person game
 
 Create a word guessing game that:
 
@@ -38,7 +38,7 @@ Don't forget to include a script tag with `src` for this file _before_ the `app.
 
 ### App
 
-Create a file `app.js` that exposes functions for running the game. 
+Create a file `app.js` that exposes a variable called words that is an array of possible words. 
 Don't forget to include a script tag with `src` for this file.
 
 1. Create a `loadWord` function that
@@ -75,3 +75,6 @@ Don't forget to include a script tag with `src` for this file.
 1. Keep track of wins and loses
 1. Allow user to play again
 1. Don't allow the play game button to be pressed if game is in progress
+
+
+1. 
