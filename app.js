@@ -17,22 +17,23 @@ function guessLetter() {
 
     var userInput = document.getElementById('letter').value.toLowerCase();
     console.log(userInput);
-
+    var userIndex = (letterBank.indexOf(userInput));
     console.log(letterBank.indexOf(userInput));
-    if(letterBank.indexOf(userInput) === (-1)) {
+    if(userIndex === (-1)) {
         alert('Guess an unguessed letter!');
+        console.log('letterBank ', letterBank);
         return;
     }
-    else {
+    else if(wordToGuess.indexOf(userInput) !== (-1)) {
         lettersGuessed.push(userInput);
         console.log(lettersGuessed);
-
+    
         //  Update guessed letters
         var displayGuessed = document.getElementById('container-guessed');
         displayGuessed.textContent = lettersGuessed;
 
         //  Remove letter from letter bank
-        letterBank = letterBank.splice(letterBank.indexOf(userInput), '');
+        letterBank.splice(userIndex, 1);
     }
 }
 
