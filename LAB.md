@@ -75,6 +75,3 @@ Don't forget to include a script tag with `src` for this file.
 1. Keep track of wins and loses
 1. Allow user to play again
 1. Don't allow the play game button to be pressed if game is in progress
-
-
-1. 
