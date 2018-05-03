@@ -1,4 +1,4 @@
-# Great an interactive Hang Person game
+# Create an interactive Hang Person game
 
 Create a word guessing game that:
 
