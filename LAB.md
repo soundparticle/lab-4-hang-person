@@ -38,7 +38,7 @@ Don't forget to include a script tag with `src` for this file _before_ the `app.
 
 ### App
 
-Create a file `app.js` that exposes a variable called words that is an array of possible words. 
+Create a file `app.js` that exposes functions for running the game. 
 Don't forget to include a script tag with `src` for this file.
 
 1. Create a `loadWord` function that
