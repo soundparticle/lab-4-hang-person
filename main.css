@@ -1,7 +1,7 @@
 body {
     display: flex;
     background: black;
-    color: green;
+    color: white;
     margin: auto;
     padding: 13px;
     justify-content: center;
@@ -13,6 +13,10 @@ body {
 }
 
 #container-blanks {
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+    padding: 13px;
     background: darkslategrey;
 }
 
