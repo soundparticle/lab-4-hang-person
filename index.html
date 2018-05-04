@@ -7,14 +7,14 @@
 </head>
 <body>
     <div id="container-main">
-        <div id="container-body">
+        <canvas id="canvas">
             <br>
-        </div>
+        </canvas>
         <div id="container-blanks">
                 <br>
         </div>
         <div id="container-letter">
-                Guess a letter! <input id="letter" type="text" maxlength="1"><input onclick="guessLetter()" type="submit">
+                Guess a letter! <input id="letter" type="text" size="1" maxlength="1"><input id="submit-button" onclick="guessLetter()" type="submit">
         </div>
         <div id="container-guessed"></div>
     </div>

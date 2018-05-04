@@ -7,11 +7,18 @@ body {
     justify-content: center;
 }
 
+#letter {
+    font-size: 2rem;
+}
+
 #container-main {
     border: 1px solid white;
     width: 333px;
 }
-
+#canvas {
+    height: 333px;
+    width: 333px;
+}
 #container-blanks {
     display: flex;
     justify-content: center;
@@ -23,11 +30,18 @@ body {
 #container-letter {
     background: green;
     color: black;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
 }
 
 #container-guessed {
     background: white;
     color: black;
-    padding: 33px;
+    padding: 13px;
+    font-size: 4rem;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
 }
 

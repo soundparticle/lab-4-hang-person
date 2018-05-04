@@ -5,14 +5,19 @@
 
 
 var letterBankMaster = 'abcdefghijklmnopqrstuvwxyz';
-//  plan for replayability
 var letterBank = letterBankMaster.split('');
 var lettersGuessed = [];
 var wrongLettersGuessed = [];
 var failedAttempts = 0;
+
 //  Change if replayability is desired
 var wordToGuess = 'prince';
-var wordBlanks = ['-', '-', '-', '-', '-', '-'];
+var wordBlanks = [];
+//  Create array with '-' for each letter of word to guess
+for (var i = 0; i < wordToGuess.length; i++) {
+    wordBlanks.push('-';)
+}
+console.log(wordBlanks);
 
 //  Main game body
 function guessLetter() {
