@@ -19,12 +19,9 @@
 
 /* Sytling shizz */
 body {
-    display: flex;
     background: black;
     color: white;
-    margin: auto;
     padding: 13px;
-    justify-content: center;
 }
 
 #letter {
@@ -33,59 +30,64 @@ body {
 
 #container-main {
     width: 333px;
+    margin: auto;
     border: 1px solid white;
     box-shadow: 3px 3px 3px #333;
 }
-
-/* Body parts */
-#body-1 {
-    position: absolute;
-    right: 41%;
-    top: 27px;
-    visibility: hidden;
-}
-
-#body-2 {
-    position: absolute;
-    right: 37%;
-    top: 95px;
-    visibility: hidden;
-}
-
-#body-3 {
-    position: absolute;
-    right: 45%;
-    top: 90px;
-    visibility: hidden;
-}
-
-#body-4 {
-    position: absolute;
-    right: 25%;
-    top: 90px;
-    visibility: hidden;
-}
-
-#body-5 {
-    position: absolute;
-    right: 45%;
-    top: 200px;
-    visibility: hidden;
-}
-
-#body-6 {
-    position: absolute;
-    right: 39%;
-    top: 200px;
-    visibility: hidden;
-}
-
-
 
 #container-gallow {
     background: purple;
     display: flex;
     justify-content: center;
+}
+
+#gallow {
+    display: absolute;
+    width: 70%;
+    height: 50%;
+}
+
+/* Body parts */
+#body-1 {
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
+#body-2 {
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 80px;
+    visibility: hidden;
+}
+
+#body-3 {
+    position: absolute;
+    margin-left: -7px;
+    margin-top: 75px;
+    visibility: hidden;
+}
+
+#body-4 {
+    position: absolute;
+    margin-left: 118px;
+    margin-top: 75px;
+    visibility: hidden;
+}
+
+#body-5 {
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 170px;
+    visibility: hidden;
+}
+
+#body-6 {
+    position: absolute;
+    margin-left: 80px;
+    margin-top: 170px;
+    visibility: hidden;
 }
 
 #container-blanks {

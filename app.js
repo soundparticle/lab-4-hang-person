@@ -3,10 +3,11 @@ var letterBank = letterBankMaster.split('');
 var lettersGuessed = [];
 var wrongLettersGuessed = [];
 var failedAttempts = 0;
-var guessLimit = 6;
 
 //  Change if replayability is desired
 var wordToGuess = 'prince';
+
+var guessLimit = wordToGuess.length;
 
 var wordBlanks = [];
 //  Create array with '-' for each letter of word to guess
@@ -31,17 +32,21 @@ function guessLetter() {
     console.log(letterBank.indexOf(userInput));
 
     //  Checks if letter is invalid or already guessed
-    if(userIndex === (-1) || userIndex === '') {
-        alert('Guess an unguessed letter!');
-        console.log('letterBank ', letterBank);
+    if(userIndex === (-1)) {
+        alert('Guess an valid unguessed letter!');
         return;
     }
 
     //  Checks if letter is in word to guess
     else if(guessIndex !== (-1)) {
-        wordBlanks[guessIndex] = userInput;
-        console.log('word blanks ' + wordBlanks);
+        for(var i = 0; i < wordToGuess.length; i++) {
+            if(wordToGuess[i] === userInput) {
+                wordBlanks[i] = userInput;
+                console.log('here ', wordBlanks);
+            }
+        }
 
+        //  Add to the bank of letters guessed
         lettersGuessed.push(userInput);
         console.log(lettersGuessed);
 
@@ -50,6 +55,7 @@ function guessLetter() {
 
         var blanks = document.getElementById('container-blanks');
         blanks.textContent = wordBlanks.join(' ');
+        console.log(wordBlanks.join(' '));
 
         //  Here's where we'll update the hang person
         //  Also filling in the blanks of the word
