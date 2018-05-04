@@ -78,5 +78,6 @@ console.log(failedAttempts);
 console.log(wordToGuess);
 
 
+ellipse (20, 20, 50, 50);
 
 
