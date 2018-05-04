@@ -1,3 +1,23 @@
+/* Animations */
+@keyframes word-glow {
+    from {
+        text-shadow: 0 0 0 black;
+    }
+    to {
+        text-shadow: 0 0 33px white;
+    }
+}
+
+@keyframes wrong-glow {
+    from {
+        color: white;
+    }
+    to {
+        color: red;
+    }
+}
+
+/* Sytling shizz */
 body {
     display: flex;
     background: black;
@@ -12,36 +32,88 @@ body {
 }
 
 #container-main {
+    width: 333px;
     border: 1px solid white;
-    width: 333px;
+    box-shadow: 3px 3px 3px #333;
 }
-#canvas {
-    height: 333px;
-    width: 333px;
+
+/* Body parts */
+#body-1 {
+    position: absolute;
+    right: 41%;
+    top: 27px;
+    visibility: hidden;
 }
-#container-blanks {
+
+#body-2 {
+    position: absolute;
+    right: 37%;
+    top: 95px;
+    visibility: hidden;
+}
+
+#body-3 {
+    position: absolute;
+    right: 45%;
+    top: 90px;
+    visibility: hidden;
+}
+
+#body-4 {
+    position: absolute;
+    right: 25%;
+    top: 90px;
+    visibility: hidden;
+}
+
+#body-5 {
+    position: absolute;
+    right: 45%;
+    top: 200px;
+    visibility: hidden;
+}
+
+#body-6 {
+    position: absolute;
+    right: 39%;
+    top: 200px;
+    visibility: hidden;
+}
+
+
+
+#container-gallow {
+    background: purple;
     display: flex;
     justify-content: center;
+}
+
+#container-blanks {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
     font-size: 4rem;
     padding: 13px;
-    background: darkslategrey;
+    background: linear-gradient(purple, black);
 }
 
 #container-letter {
-    background: green;
-    color: black;
+    background: black;
+    color: white;
     font-size: 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    animation: word-glow 1s alternate infinite;
 }
 
 #container-guessed {
-    background: white;
-    color: black;
+    background: linear-gradient(black, purple);
+    color: white;
     padding: 13px;
-    font-size: 4rem;
-    word-wrap: break-word;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
+    margin: auto;
+    animation: wrong-glow 50ms alternate infinite;
 }
 
