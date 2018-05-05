@@ -1,10 +1,10 @@
 /* Animations */
 @keyframes word-glow {
     from {
-        text-shadow: 0 0 0 black;
+        text-shadow: 0 0 0 blue;
     }
     to {
-        text-shadow: 0 0 13px white;
+        text-shadow: 0 0 13px blue;
     }
 }
 
@@ -64,7 +64,8 @@
 body {
     background: black;
     color: black;
-    padding: 13px;
+    padding: 0;
+    margin: 0;
 }
 
 #letter {
@@ -134,13 +135,20 @@ body {
     visibility: hidden;
 }
 
+#body-7 {
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
 #container-blanks {
     display: block;
     margin: 0;
     padding: 0;
     text-align: center;
-    font-size: 4rem;
-    background: linear-gradient(red, white);
+    font-size: 3rem;
+    background: white
 }
 
 #container-letter {
@@ -153,7 +161,7 @@ body {
 }
 
 #container-guessed {
-    background: linear-gradient(white, red);
+    background: white;
     color: black;
     padding: 13px;
     font-size: 3rem;

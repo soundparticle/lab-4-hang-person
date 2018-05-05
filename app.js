@@ -1,7 +1,7 @@
 
 //  Setup stuff for API communication
 var request = new XMLHttpRequest();
-request.open('GET', 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', true);
+request.open('GET', 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=verb&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=9&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', true);
 
 //  Send a request for a random word
 request.send();
@@ -12,7 +12,7 @@ var regExp = /[^a-z]+/gi;
 //  Do this when the JSON loads
 request.onload = function() {
     // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
+    var data = JSON.parse(request.response);
 
     wordToGuess = data.word.toLowerCase();
     if(wordToGuess !== wordToGuess.replace(regExp, '')) {
@@ -38,39 +38,39 @@ setTimeout(() => {
     //  Create array with '-' for each letter of word to guess
     for(var i = 0; i < wordToGuess.length; i++) {
         wordBlanks.push('-');
+        document.getElementById('container-blanks').textContent = wordBlanks.join(' ');
     }
     console.log(wordBlanks);
 }, 1000);
 
-// // Detect Enter
-// document.getElementById('letter').addEventListener('keyup', function(event) {
-//     event.preventDefault();
-//     if(event.keyCode === 13) {
-//         document.getElementById('submit-button').click();
-//         console.log('enter is pressed');
-//     }
-    
-// });
+//  Draw blanks
+//background: linear-gradient(red, white);
 
 //  Main game body
 //eslint-disable-next-line
 function guessLetter() {
     console.log('we did it!');
 
-    var userInput = document.getElementById('letter').value.toLowerCase();
+    //  Grab some elements
+    var blanks = document.getElementById('container-blanks');
+    var guessed = document.getElementById('container-guessed');
+    var letters = document.getElementById('letter');
+    var userInput = letters.value.toLowerCase();
+
+    //  Grab some indecies
+    var guessIndex = wordToGuess.indexOf(userInput);
+    var userIndex = letterBank.indexOf(userInput);
+    console.log(letterBank.indexOf(userInput));
     console.log(userInput);
 
     //  Clear the contents of the text input box
-    document.getElementById('letter').value = '';
-
-    var guessIndex = wordToGuess.indexOf(userInput);
-
-    var userIndex = (letterBank.indexOf(userInput));
-    console.log(letterBank.indexOf(userInput));
+    letters.value = '';
 
     //  Checks if letter is invalid or already guessed
     if(userIndex === (-1)) {
-        alert('Guess an valid unguessed letter!');
+        setTimeout(() => {
+            alert('Please guess a valid letter.');
+        }, 100);
         return;
     }
 
@@ -91,13 +91,13 @@ function guessLetter() {
         //  Remove letter from letter bank
         letterBank.splice(userIndex, 1);
 
-        var blanks = document.getElementById('container-blanks');
         blanks.textContent = wordBlanks.join(' ');
         console.log('wordBlanks ', wordBlanks.join(''));
 
         if(correctGuesses === wordToGuess.length) {
             console.log('winner winner chicken dinner!');
-            document.getElementById('container-blanks').style = 'animation: win-glow 50ms alternate infinite';
+            blanks.setAttribute('style', 'animation: win-glow 50ms alternate infinite; background: linear-gradient(green, white');
+            guessed.setAttribute('style', 'background: linear-gradient(white, green);');
             getJiggy();
         }
     }
@@ -109,8 +109,7 @@ function guessLetter() {
         console.log(wrongLettersGuessed);
 
         //  Update guessed letters
-        var displayGuessed = document.getElementById('container-guessed');
-        displayGuessed.textContent = wrongLettersGuessed.join(' ');
+        guessed.textContent = wrongLettersGuessed.join(' ');
 
         //  Remove letter from letter bank
         letterBank.splice(userIndex, 1);
@@ -128,9 +127,11 @@ function guessLetter() {
 
         //  Check if they've guessed too many times
         if(failedAttempts === guessLimit) {
-            setTimeout(() => {
-                alert('Wrong! You have guessed to many times. Refresh to try again.');
-            }, 100);
+
+            //  Animate the text and display the correct answer
+            blanks.setAttribute('style', 'animation: wrong-glow 50ms alternate infinite; background: linear-gradient(red, white);');
+            guessed.setAttribute('style', 'background: linear-gradient(white, red);');
+            blanks.textContent = wordToGuess.split('').join(' ');
             getJiggy();
             return;
         }
@@ -140,9 +141,16 @@ function guessLetter() {
 
 function getJiggy() {
     //  Gettin jiggy wit it!
-    for(var j = 1; j <= 6; j++) {
+
+    //  Show rest of body parts if not already visible
+    for(var j = 2; j <= 7; j++) {
         document.getElementById('body-' + j).setAttribute('style', 'animation: jiggle 50ms alternate infinite; visibility: visible;');
     }
     document.getElementById('container-gallow').setAttribute('style', 'animation: rainbow 2s forwards infinite;');
-    document.getElementById('submit-button').disabled = true;    
+    //  Hide the first head if not already hidden
+    document.getElementById('body-1').setAttribute('style', 'visibiltiy: hidden');
+
+    //  Disable the textbox and sumbit button to force a page refresh if they want to play again
+    document.getElementById('submit-button').disabled = true;
+    document.getElementById('letter').disabled = true;
 }
