@@ -1,3 +1,4 @@
+
 //  Setup stuff for API communication
 var request = new XMLHttpRequest();
 request.open('GET', 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=7&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', true);
@@ -33,9 +34,21 @@ setTimeout(() => {
     for(var i = 0; i < wordToGuess.length; i++) {
         wordBlanks.push('-');
     }
-    console.log(wordBlanks);    
+    console.log(wordBlanks);
 }, 1000);
+// Detect Enter
+document.getElementById('letter').addEventListener('keyup', function(event) {
+    event.preventDefault();
+    if(event.keyCode === 13) {
+        document.getElementById('submit-button').click();
+        console.log('enter is pressed');
+    }
+    
+});
+
+
 //  Main game body
+//eslint-disable-next-line
 function guessLetter() {
     console.log('we did it!');
 
@@ -107,7 +120,7 @@ function guessLetter() {
         //  Check if they've guessed too many times
         if(failedAttempts === guessLimit) {
             setTimeout(() => {
-                alert('Wrong! You have guessed to many times. Refresh to try again.');                
+                alert('Wrong! You have guessed to many times. Refresh to try again.');
             }, 1000);
             document.getElementById('submit-button').disabled = true;
             return;
