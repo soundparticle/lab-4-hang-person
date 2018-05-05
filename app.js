@@ -1,19 +1,23 @@
 
 //  Setup stuff for API communication
 var request = new XMLHttpRequest();
-request.open('GET', 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=7&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', true);
+request.open('GET', 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', true);
 
 //  Send a request for a random word
 request.send();
 
 var wordToGuess = '';
+var regExp = /[^a-z]+/gi;
 
 //  Do this when the JSON loads
 request.onload = function() {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
 
-    wordToGuess = data.word;
+    wordToGuess = data.word.toLowerCase();
+    if(wordToGuess !== wordToGuess.replace(regExp, '')) {
+        request.send();
+    }
     console.log(data);
     console.log(data.word);
 };
@@ -24,6 +28,7 @@ var letterBank = letterBankMaster.split('');
 var lettersGuessed = [];
 var wrongLettersGuessed = [];
 var failedAttempts = 0;
+var correctGuesses = 0;
 
 var guessLimit = 6;
 
@@ -36,16 +41,16 @@ setTimeout(() => {
     }
     console.log(wordBlanks);
 }, 1000);
-// Detect Enter
-document.getElementById('letter').addEventListener('keyup', function(event) {
-    event.preventDefault();
-    if(event.keyCode === 13) {
-        document.getElementById('submit-button').click();
-        console.log('enter is pressed');
-    }
-    
-});
 
+// // Detect Enter
+// document.getElementById('letter').addEventListener('keyup', function(event) {
+//     event.preventDefault();
+//     if(event.keyCode === 13) {
+//         document.getElementById('submit-button').click();
+//         console.log('enter is pressed');
+//     }
+    
+// });
 
 //  Main game body
 //eslint-disable-next-line
@@ -74,6 +79,7 @@ function guessLetter() {
         for(var i = 0; i < wordToGuess.length; i++) {
             if(wordToGuess[i] === userInput) {
                 wordBlanks[i] = userInput;
+                correctGuesses++;
                 console.log('here ', wordBlanks);
             }
         }
@@ -87,10 +93,13 @@ function guessLetter() {
 
         var blanks = document.getElementById('container-blanks');
         blanks.textContent = wordBlanks.join(' ');
-        console.log(wordBlanks.join(' '));
+        console.log('wordBlanks ', wordBlanks.join(''));
 
-        //  Here's where we'll update the hang person
-        //  Also filling in the blanks of the word
+        if(correctGuesses === wordToGuess.length) {
+            console.log('winner winner chicken dinner!');
+            document.getElementById('container-blanks').style = 'animation: win-glow 50ms alternate infinite';
+            getJiggy();
+        }
     }
 
     //  Wrong letter has been guessed
@@ -121,17 +130,19 @@ function guessLetter() {
         if(failedAttempts === guessLimit) {
             setTimeout(() => {
                 alert('Wrong! You have guessed to many times. Refresh to try again.');
-            }, 1000);
-            document.getElementById('submit-button').disabled = true;
+            }, 100);
+            getJiggy();
             return;
         }
     }
 }
 
-console.log(letterBankMaster);
-console.log(letterBank);
-console.log(lettersGuessed);
-console.log(failedAttempts);
-console.log(wordToGuess);
 
-
+function getJiggy() {
+    //  Gettin jiggy wit it!
+    for(var j = 1; j <= 6; j++) {
+        document.getElementById('body-' + j).setAttribute('style', 'animation: jiggle 50ms alternate infinite; visibility: visible;');
+    }
+    document.getElementById('container-gallow').setAttribute('style', 'animation: rainbow 2s forwards infinite;');
+    document.getElementById('submit-button').disabled = true;    
+}
