@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hang Person!!</title>
+    <title>Make it rain!!</title>
     <link rel="stylesheet" href="main.css">
     <script src="app.js"></script>
 </head>
 <body>
+    
     <div id="container-main">
-        <div id="container-body">
-            <br>
+        <div id="container-gallow">
+            <img id="gallow" src="./images/gallows.png">
+            <img id="body-1" src="./images/head.png">
+            <img id="body-2" src="./images/torso.png">
+            <img id="body-3" src="./images/leftArm.png">
+            <img id="body-4" src="./images/rightArm.png">
+            <img id="body-5" src="./images/leg.png">
+            <img id="body-6" src="./images/leg.png">
         </div>
         <div id="container-blanks">
                 <br>
         </div>
         <div id="container-letter">
-                Guess a letter! <input id="letter" type="text" maxlength="1"><input onclick="guessLetter()" type="submit">
+                Guess a letter! <input id="letter" type="text" size="1" maxlength="1"><input id="submit-button" onclick="guessLetter()" type="submit">
         </div>
         <div id="container-guessed"></div>
     </div>

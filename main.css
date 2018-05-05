@@ -1,33 +1,121 @@
+/* Animations */
+@keyframes word-glow {
+    from {
+        text-shadow: 0 0 0 black;
+    }
+    to {
+        text-shadow: 0 0 50px white;
+    }
+}
+
+@keyframes wrong-glow {
+    from {
+        color: white;
+    }
+    to {
+        color: red;
+    }
+}
+
+/* Sytling shizz */
 body {
-    display: flex;
     background: black;
     color: white;
-    margin: auto;
     padding: 13px;
-    justify-content: center;
+}
+
+#letter {
+    font-size: 2rem;
 }
 
 #container-main {
-    border: 1px solid white;
     width: 333px;
+    margin: auto;
+    border: 1px solid white;
+    box-shadow: 3px 3px 3px #333;
+}
+
+#container-gallow {
+    background: purple;
+    display: flex;
+    justify-content: center;
+}
+
+#gallow {
+    display: absolute;
+    width: 70%;
+    height: 50%;
+}
+
+/* Body parts */
+#body-1 {
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
+#body-2 {
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 80px;
+    visibility: hidden;
+}
+
+#body-3 {
+    position: absolute;
+    margin-left: -7px;
+    margin-top: 75px;
+    visibility: hidden;
+}
+
+#body-4 {
+    position: absolute;
+    margin-left: 118px;
+    margin-top: 75px;
+    visibility: hidden;
+}
+
+#body-5 {
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 170px;
+    visibility: hidden;
+}
+
+#body-6 {
+    position: absolute;
+    margin-left: 80px;
+    margin-top: 170px;
+    visibility: hidden;
 }
 
 #container-blanks {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    text-align: center;
     font-size: 4rem;
     padding: 13px;
-    background: darkslategrey;
+    background: linear-gradient(purple, black);
 }
 
 #container-letter {
-    background: green;
-    color: black;
+    background: black;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    animation: word-glow 1s alternate infinite;
 }
 
 #container-guessed {
-    background: white;
-    color: black;
-    padding: 33px;
+    background: linear-gradient(black, purple);
+    color: white;
+    padding: 13px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    animation: wrong-glow 50ms alternate infinite;
 }
 
