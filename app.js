@@ -14,10 +14,7 @@ request.onload = function() {
     // Begin accessing JSON data here
     var data = JSON.parse(request.response);
 
-    wordToGuess = data.word.toLowerCase();
-    if(wordToGuess !== wordToGuess.replace(regExp, '')) {
-        request.send();
-    }
+    wordToGuess = data.word.toLowerCase().replace(regExp, '');
     console.log(data);
     console.log(data.word);
 };
@@ -153,4 +150,34 @@ function getJiggy() {
     //  Disable the textbox and sumbit button to force a page refresh if they want to play again
     document.getElementById('submit-button').disabled = true;
     document.getElementById('letter').disabled = true;
+
+    document.body.style.background = 'white';
+
+    // MAKE IT RAIN!!!!
+    rain();
+}
+
+//  PURPLE RAIN, PURPLE RAAIINN!!!
+function rain() {
+    var dropCount = 100;
+    var temp = document.createDocumentFragment();
+    for(var r = 0; r < dropCount; r++) {
+        console.log('making rain');
+
+        var randomX = Math.round(Math.random(100) * 98);
+        var randomY = Math.round(Math.random(100) * 50);
+        var randomD = Math.round(Math.random(10) * 60) * 10;
+        console.log(randomX, ' ', randomY);
+
+        var rain = document.createElement('span');
+        rain.id = 'rain';
+        rain.style = 'left: ' + randomX + '%; width: 3px; top: -1000px;';
+        rain.style.setProperty('animation-delay', randomY + '00ms');
+        rain.style.setProperty('animation-duration', randomD + 'ms');
+        console.log(rain);
+        temp.appendChild(rain);
+    }
+    setTimeout(() => {
+        document.body.appendChild(temp);
+    }, 100);
 }
