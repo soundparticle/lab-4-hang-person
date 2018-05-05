@@ -4,23 +4,66 @@
         text-shadow: 0 0 0 black;
     }
     to {
-        text-shadow: 0 0 50px white;
+        text-shadow: 0 0 13px white;
+    }
+}
+
+@keyframes win-glow {
+    from {
+        color: black;
+        text-shadow: 0 0 0 black;
+    }
+    to {
+        color: green;
+        text-shadow: 0 0 13px green;
     }
 }
 
 @keyframes wrong-glow {
     from {
-        color: white;
-    }
-    to {
         color: red;
     }
+    to {
+        color: black;
+    }
 }
+
+@keyframes jiggle {
+    from {
+        padding: 0 0 0 3px;
+    }
+    to {
+        padding: 0 3px 0 0;
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background-color: red;
+    }
+    20% {
+        background-color: orange;
+    }
+    40% {
+        background-color: green;
+    }
+    60% {
+        background-color: blue;
+    }
+    80% {
+        background-color: purple;
+    }
+    100% {
+        background-color: red;
+    }
+}
+
+
 
 /* Sytling shizz */
 body {
     background: black;
-    color: white;
+    color: black;
     padding: 13px;
 }
 
@@ -36,10 +79,11 @@ body {
 }
 
 #container-gallow {
-    background: purple;
+    background: blue;
     display: flex;
     justify-content: center;
-}
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
 
 #gallow {
     display: absolute;
@@ -58,50 +102,50 @@ body {
 #body-2 {
     position: absolute;
     margin-left: 55px;
-    margin-top: 80px;
+    margin-top: 110px;
     visibility: hidden;
 }
 
 #body-3 {
     position: absolute;
     margin-left: -7px;
-    margin-top: 75px;
+    margin-top: 105px;
     visibility: hidden;
 }
 
 #body-4 {
     position: absolute;
     margin-left: 118px;
-    margin-top: 75px;
+    margin-top: 105px;
     visibility: hidden;
 }
 
 #body-5 {
     position: absolute;
     margin-left: 30px;
-    margin-top: 170px;
+    margin-top: 200px;
     visibility: hidden;
 }
 
 #body-6 {
     position: absolute;
     margin-left: 80px;
-    margin-top: 170px;
+    margin-top: 200px;
     visibility: hidden;
 }
 
 #container-blanks {
-    display: flex;
-    justify-content: space-evenly;
+    display: block;
+    margin: 0;
+    padding: 0;
     text-align: center;
     font-size: 4rem;
-    padding: 13px;
-    background: linear-gradient(purple, black);
+    background: linear-gradient(red, white);
 }
 
 #container-letter {
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     font-size: 2rem;
     display: flex;
     justify-content: space-evenly;
@@ -109,8 +153,8 @@ body {
 }
 
 #container-guessed {
-    background: linear-gradient(black, purple);
-    color: white;
+    background: linear-gradient(white, red);
+    color: black;
     padding: 13px;
     font-size: 3rem;
     display: flex;
