@@ -189,7 +189,49 @@ body {
     height: 200px;
     width: 6px;
     left: 100px;
+    z-index: 999999;
     animation: raining ease-in forwards infinite;
-    animation-duration: --randomDur;
-    animation-delay: --randomDelay;
 }
+
+/* Flooding stuffs */
+@keyframes flood {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+#flood {
+    position: fixed;
+    width: 111%;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    z-index: 99;
+    background: red;
+}
+
+@keyframes result-glow {
+    from {
+        color: black;
+        text-shadow: 0 0 0 black;
+    }
+    to {
+        color: white;
+        text-shadow: 0 0 33px black;
+    }
+}
+
+#result-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    animation: result-glow 500ms alternate infinite;
+    z-index: 999;
+}
+
+

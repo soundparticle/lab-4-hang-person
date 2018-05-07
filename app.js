@@ -26,9 +26,7 @@ var lettersGuessed = [];
 var wrongLettersGuessed = [];
 var failedAttempts = 0;
 var correctGuesses = 0;
-
 var guessLimit = 6;
-
 var wordBlanks = [];
 
 setTimeout(() => {
@@ -36,6 +34,7 @@ setTimeout(() => {
     for(var i = 0; i < wordToGuess.length; i++) {
         wordBlanks.push('-');
         document.getElementById('container-blanks').textContent = wordBlanks.join(' ');
+        document.getElementById('letter').disabled = false;
     }
     console.log(wordBlanks);
 }, 1000);
@@ -96,6 +95,7 @@ function guessLetter() {
             blanks.setAttribute('style', 'animation: win-glow 50ms alternate infinite; background: linear-gradient(green, white');
             guessed.setAttribute('style', 'background: linear-gradient(white, green);');
             getJiggy();
+            flood('green', 'WINNER!!!');
         }
     }
 
@@ -130,6 +130,7 @@ function guessLetter() {
             guessed.setAttribute('style', 'background: linear-gradient(white, red);');
             blanks.textContent = wordToGuess.split('').join(' ');
             getJiggy();
+            flood('red', 'LOSER!!!');
             return;
         }
     }
@@ -166,7 +167,7 @@ function rain() {
 
         var randomX = Math.round(Math.random(100) * 98);
         var randomY = Math.round(Math.random(100) * 50);
-        var randomD = Math.round(Math.random(10) * 60) * 10;
+        var randomD = Math.round(Math.random(100) * 100) * 10;
         console.log(randomX, ' ', randomY);
 
         var rain = document.createElement('span');
@@ -177,7 +178,23 @@ function rain() {
         console.log(rain);
         temp.appendChild(rain);
     }
+
     setTimeout(() => {
         document.body.appendChild(temp);
+    }, 100);
+}
+
+// Flood stuffs
+function flood(color, result) {
+    var resultMessage = document.createElement('span');
+    var flood = document.createElement('span');
+    resultMessage.id = 'result-message';
+    resultMessage.textContent = result;
+    flood.id = 'flood';
+    flood.style.setProperty('animation', 'flood 15s forwards');
+    flood.style.setProperty('background', color);
+    setTimeout(() => {
+        document.body.appendChild(flood);
+        document.body.appendChild(resultMessage);
     }, 100);
 }
